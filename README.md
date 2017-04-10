@@ -5,7 +5,20 @@
 
 ![screenshot](/screenshot.gif)
 
+### 使用
 
-## todo
+``````
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+  
+ dependencies {
+	        compile 'com.github.jeffreyhappy:BottomTopDialog:v0.1'
+	}
+``````
+### todo
   可以更改动画
 
