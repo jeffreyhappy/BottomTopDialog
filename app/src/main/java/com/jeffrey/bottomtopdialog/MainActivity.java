@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
                 showTopDialog(findViewById(R.id.btn2));
                 break;
             case R.id.btn3:
-                showTopDialog(findViewById(R.id.btn3));
+                showTopDialog2(findViewById(R.id.btn3));
                 break;
         }
     }
@@ -29,11 +29,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void showBottomDialog(){
         ShareDialog shareDialog = new ShareDialog();
+        shareDialog.overrideAnim(R.anim.fade_in_center,R.anim.fade_out_center);
         shareDialog.show(getSupportFragmentManager(),"shareDialog");
     }
 
     private void showTopDialog(View view){
         FilterDialog filterDialog = new FilterDialog();
+        filterDialog.show(getSupportFragmentManager(),"filterDialog",view);
+    }
+
+    private void showTopDialog2(View view){
+        FilterDialog filterDialog = new FilterDialog();
+        filterDialog.overrideAnim(R.anim.fade_in_center,R.anim.fade_out_center);
         filterDialog.show(getSupportFragmentManager(),"filterDialog",view);
     }
 }

@@ -195,6 +195,16 @@ public class BottomTopView {
     }
 
 
+    public void overrideAnim(Animation in,Animation out){
+        Context context = contextWeak.get();
+        if (context == null) {
+            return ;
+        }
+
+        inAnim = in;
+        outAnim = out;
+    }
+
     private  int getStatusBarHeight(Context context) {
         Resources resources = context.getResources();
         int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
@@ -250,6 +260,7 @@ public class BottomTopView {
             case Gravity.BOTTOM:
                 return isInAnimation ? R.anim.slide_in_bottom : R.anim.slide_out_bottom;
             case Gravity.TOP:
+                return isInAnimation ? R.anim.slide_in_top : R.anim.slide_out_top;
             case Gravity.CENTER:
                 return isInAnimation ? R.anim.fade_in_center : R.anim.fade_out_center;
         }

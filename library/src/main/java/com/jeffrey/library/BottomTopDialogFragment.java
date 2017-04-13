@@ -1,6 +1,7 @@
 package com.jeffrey.library;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 /**
  * Created by Li on 2017/1/5.
@@ -21,6 +23,8 @@ public abstract class BottomTopDialogFragment extends DialogFragment implements 
 
     protected  BottomTopView bottomTopView;
 
+    private int outAnim;
+    private int inAnim;
 
     @Nullable
     @Override
@@ -50,6 +54,9 @@ public abstract class BottomTopDialogFragment extends DialogFragment implements 
             dialog.getWindow().setLayout(width, height);//全屏
             dialog.getWindow().getDecorView().setPadding(0,0,0,0);//全屏
         }
+        if (inAnim != 0 && outAnim != 0){
+            bottomTopView.overrideAnim(AnimationUtils.loadAnimation(getContext(), inAnim),AnimationUtils.loadAnimation(getContext(), outAnim));
+        }
         contentShow();
     }
 
@@ -71,6 +78,12 @@ public abstract class BottomTopDialogFragment extends DialogFragment implements 
         dismissWithAnim();
     }
 
+    public void overrideAnim(int in,int out){
+        this.inAnim     = in;
+        this.outAnim    = out;
+    }
+
+
     protected void contentShow(){
         bottomTopView.show();
     }
@@ -79,6 +92,7 @@ public abstract class BottomTopDialogFragment extends DialogFragment implements 
     private BottomTopView getBottomTopView(){
         return bottomTopView;
     }
+
 
 
 
